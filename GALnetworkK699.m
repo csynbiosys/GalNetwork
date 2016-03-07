@@ -34,7 +34,7 @@ kp = 0.091;
 kq = 0.0556;
 cp = 1;
 cq = 30;
-GALe = 2.366*10^8;
+GALe = 0 %2.366*10^8;
 
 % values for glucose network module for the K699-strain
 
@@ -58,7 +58,7 @@ vsd = 9.30*10^(-6);
 ksd = 30;
 
 
-dy = zeros(18,1);
+dy = zeros(23,1);
 dy(1) = b1*y(6)-d1*y(1);
 dy(2) = b2*y(7)-d1*y(2);
 dy(3) = b3*y(8)-d1*y(2)-k3*y(15)*y(3)+kn3*y(13);
@@ -76,10 +76,11 @@ dy(14)= k80*y(5)*y(13)-kn80*y(14)-d1*y(14);
 dy(15)= y(19)*y(20)-((kcat*y(1)*y(15))/(kmgk+y(15)))-k3*y(3)*y(15)+kn3*y(13)-d1*y(15);
 dy(16)= (aglu+eglu*((y(18)/cglu)^b))/(1+((y(18)/cglu)^b))-yglu*y(16);
 dy(17)= tglu*y(16)-dglu*y(17);
-dy(18)= ktr2*y(17)*((GLUe-y(18))/(kmtr2+GLUe+y(18)+(atr2*GLUe*y(18))/kmtr2))-((uglu*y(18)*y(17))/(kglu+y(18)))-dd*y(18);
+dy(18)= ktr2*y(17)*((GLUe-y(18))/(kmtr+GLUe+y(18)+(atr*GLUe*y(18))/kmtr))-((uglu*y(18)*y(17))/(kglu+y(18)))-dd*y(18);
 
 y(19)= (p^q)/((p^q)+(y(17)^q));
 y(20)= ktr*y(2)*((GALe-y(15))/(kmtr+GALe+y(15)+(atr*GALe*y(15)/kmtr)));
+%% This part of the code has to be debugged.
 % For N=1
 y(21)= (symsum((nchoosek(1,i)*(kq*kp*y(10)*y(11))^i),i,0,1))*(symsum((nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h),h,1,1-i))/((symsum((nchoosek(1,i)*(kq*kp*y(10)*y(11))^i),i,0,1))*(symsum((nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h),h,0,1-i)));
 % For N=2
