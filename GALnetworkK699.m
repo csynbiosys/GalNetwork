@@ -92,8 +92,7 @@ y(20)= ktr*y(2)*((GALe-y(15))/(kmtr+GALe+y(15)+(atr*GALe*y(15)/kmtr)));
 y(22)= symsum((nchoosek(2,i))*((kq*kp*y(10)*y(11))^i)*(symsum((nchoosek(2-i,h))*(cp^(h+i-1))*(cq^(i-1))*((kp*y(10))^h),h,1,2-i)),i,0,2)/symsum((nchoosek(2,i))*((kq*kp*y(10)*y(11))^i)*(symsum((nchoosek(2-i,h))*(cp^(h+i-1))*(cq^(i-1))*((kp*y(10))^h),h,0,2-i)),i,0,2);
 
 % % For N=4
-% y(23)= (symsum((nchoosek(4,i)*(kq*kp*y(10)*y(11))^i),i,0,4))*(symsum((nchoosek(4-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h),h,1,4-i))/((symsum((nchoosek(4,i)*(kq*kp*y(10)*y(11))^i),i,0,4))*(symsum((nchoosek(4-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h),h,0,4-i)));
-
+ y(23)= symsum((nchoosek(4,i))*((kq*kp*y(10)*y(11))^i)*(symsum((nchoosek(4-i,h))*(cp^(h+i-1))*(cq^(i-1))*((kp*y(10))^h),h,1,2-i)),i,0,4)/symsum((nchoosek(4,i))*((kq*kp*y(10)*y(11))^i)*(symsum((nchoosek(4-i,h))*(cp^(h+i-1))*(cq^(i-1))*((kp*y(10))^h),h,0,4-i)),i,0,4);
 
 end
 
