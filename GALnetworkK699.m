@@ -78,10 +78,12 @@ dy(15)= y(19)*y(20)-((kcat*y(1)*y(15))/(kmgk+y(15)))-k3*y(3)*y(15)+kn3*y(13)-d1*
 dy(16)= (aglu+eglu*((y(18)/cglu)^b))/(1+((y(18)/cglu)^b))-yglu*y(16);
 dy(17)= tglu*y(16)-dglu*y(17);
 dy(18)= ktr2*y(17)*((GLUe-y(18))/(kmtr+GLUe+y(18)+(atr*GLUe*y(18))/kmtr))-((uglu*y(18)*y(17))/(kglu+y(18)))-dd*y(18);
+%% FM 08/03/2016
+% The ones below are not state variables but you are treating them as such.
+% Let's discuss this tomorrow
 
 y(19)= (p^q)/((p^q)+(y(17)^q));
 y(20)= ktr*y(2)*((GALe-y(15))/(kmtr+GALe+y(15)+(atr*GALe*y(15)/kmtr)));
-%% This part of the code has to be debugged.
 
 % Trying to put the second part of the multiplication term into the first
 % higher ranking sum series. 
