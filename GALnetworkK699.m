@@ -84,17 +84,123 @@ dy(18)= ktr2*y(17)*((GLUe-y(18))/(kmtr+GLUe+y(18)+(atr*GLUe*y(18))/kmtr))-((uglu
 
 y(19)= (p^q)/((p^q)+(y(17)^q));
 y(20)= ktr*y(2)*((GALe-y(15))/(kmtr+GALe+y(15)+(atr*GALe*y(15)/kmtr)));
+% y(21)= (nchoosek(N,i)*(kq*kp*y(10)*y(11))^i)*(nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h)/(nchoosek(1,i)*(kq*kp*y(10)*y(11))^i)*(nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
 
-% Trying to put the second part of the multiplication term into the first
-% higher ranking sum series. 
-% For N=1
- y(21)= symsum((nchoosek(1,i))*((kq*kp*y(10)*y(11))^i)*(symsum((nchoosek(1-i,h))*(cp^(h+i-1))*(cq^(i-1))*((kp*y(10))^h),h,1,1-i)),i,0,1)/symsum((nchoosek(1,i))*((kq*kp*y(10)*y(11))^i)*(symsum((nchoosek(1-i,h))*(cp^(h+i-1))*(cq^(i-1))*((kp*y(10))^h),h,0,1-i)),i,0,1);
-%y(21)= (symsum((nchoosek(1,i)*(kq*kp*y(10)*y(11))^i),i,0,1))*(symsum((nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h),h,1,1-i))/((symsum((nchoosek(1,i)*(kq*kp*y(10)*y(11))^i),i,0,1))*(symsum((nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h),h,0,1-i)));
-% For N=2
-y(22)= symsum((nchoosek(2,i))*((kq*kp*y(10)*y(11))^i)*(symsum((nchoosek(2-i,h))*(cp^(h+i-1))*(cq^(i-1))*((kp*y(10))^h),h,1,2-i)),i,0,2)/symsum((nchoosek(2,i))*((kq*kp*y(10)*y(11))^i)*(symsum((nchoosek(2-i,h))*(cp^(h+i-1))*(cq^(i-1))*((kp*y(10))^h),h,0,2-i)),i,0,2);
+% Expressing the sum series with a for loop
+% ----- For N=1 -------
+N=1;
+x=1;
+a=1;
+h=1;
+%Term of the nominator
+for i= 0:N
+   
+    for a=h:N-i
+        y2n(a)= (nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
+        a =a+1;
+    end
+ y1n(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i;
+ x=x+1;
+end
+yn= (sum(y1n(1:2))*(sum(y2n(1:2)));
+clear x; clear h; clear a;
 
-% % For N=4
- y(23)= symsum((nchoosek(4,i))*((kq*kp*y(10)*y(11))^i)*(symsum((nchoosek(4-i,h))*(cp^(h+i-1))*(cq^(i-1))*((kp*y(10))^h),h,1,2-i)),i,0,4)/symsum((nchoosek(4,i))*((kq*kp*y(10)*y(11))^i)*(symsum((nchoosek(4-i,h))*(cp^(h+i-1))*(cq^(i-1))*((kp*y(10))^h),h,0,4-i)),i,0,4);
+%Term of the denominator
+x=1;
+a=1;
+h=0;
+for i= 0:N
+   
+    for a=h:N-i
+        y2d(a)= (nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
+        a =a+1;
+    end
+ y1d(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i;
+ x=x+1;
+
+yd= (sum(y1d(1:2))*(sum(y2d(1:2)));
+clear x; clear h; clear a;
+%Division
+y(21)= yn/yd;
+
+clear y2n;clear y1n;clear y2d; clear y1d;clear yd;clear yn;
+
+% ---- For N=2 -----
+N=2;
+x=1;
+a=1;
+h=1;
+%Term of the nominator
+for i= 0:N
+   
+    for a=h:N-i
+        y2n(a)= (nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
+        a =a+1;
+    end
+ y1n(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i;
+ x=x+1;
+end
+yn= (sum(y1n(1:3))*(sum(y2n(1:3)));
+clear x; clear h; clear a;
+%Term of the denominator
+x=1;
+a=1;
+h=0;
+for i= 0:N
+   
+    for a=h:N-i
+        y2d(a)= (nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
+        a =a+1;
+    end
+ y1d(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i;
+ x=x+1;
+
+yd= (sum(y1d(1:3))*(sum(y2d(1:3)));
+clear x; clear h; clear a;
+%Division
+y(22)= yn/yd;
+
+clear y2n;clear y1n;clear y2d; clear y1d;clear yd;clear yn;
+
+%---- for N=4 -----
+
+N=4;
+x=1;
+a=1;
+h=1;
+%Term of the nominator
+for i= 0:N
+   
+    for a=h:N-i
+        y2n(a)= (nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
+        a =a+1;
+    end
+ y1n(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i;
+ x=x+1;
+end
+yn= (sum(y1n(1:5))*(sum(y2n(1:5)));
+clear x; clear h; clear a;
+%Term of the denominator
+x=1;
+a=1;
+h=0;
+for i= 0:N
+   
+    for a=h:N-i
+        y2d(a)= (nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
+        a =a+1;
+    end
+ y1d(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i;
+ x=x+1;
+
+yd= (sum(y1d(1:5))*(sum(y2d(1:5)));
+clear x; clear h; clear a;
+%Division
+y(23)= yn/yd;
+
+clear y2n;clear y1n;clear y2d; clear y1d;clear yd;clear yn;
+
+
 
 end
 
