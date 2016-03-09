@@ -59,25 +59,26 @@ vsd = 9.30*10^(-6);
 ksd = 30;
 
 
-% dy = zeros(23,1);
-% dy(1) = b1*y(6)-d1*y(1);
-% dy(2) = b2*y(7)-d1*y(2);
-% dy(3) = b3*y(8)-d1*y(2)-k3*y(15)*y(3)+kn3*y(13);
-% dy(4) = b4*y19-d1*y(4)-2*k4d*((y(4))^2)+2*kn4d*y(10);
-% dy(5) = b80*y(9)-d1*y(5)-2*k80d*(y(5)^2)+2*kn80d*y(11)-k80*y(13)*y(5)+kn80*y(14);
-% dy(6) = a1*y(19)*y23-y1*y(6)-((vsd*y(6)*y(17))/(ksd+y(6)));
-% dy(7) = a2*y22-y2*y(7);
-% dy(8) = a3*y19*y21-y3*y(8)-((vsd*y(8)*y(17))/(ksd+y(8)));
-% dy(9) = a80*y21-y80*y(9);
-% dy(10)= k4d*(y(4)^2)-kn4d*y(10)-kr*y(11)*y(10)+knr*y(12)-d1*y(10);
-% dy(11)= k80d*(y(5)^2)-kn80d*y(11)-kr*y(11)*y(10)+knr*y(12)-d1*y(11);
-% dy(12)= kr*dy(11)*dy(10)-knr*y(12)-d1*y(12);
-% dy(13)= k3*y(3)*y(15)-kn3*y(13)-k80*y(5)*y(13)+kn80*y(14)-d1*y(13);
-% dy(14)= k80*y(5)*y(13)-kn80*y(14)-d1*y(14);
-% dy(15)= y19*y20-((kcat*y(1)*y(15))/(kmgk+y(15)))-k3*y(3)*y(15)+kn3*y(13)-d1*y(15);
-% dy(16)= (aglu+eglu*((y(18)/cglu)^b))/(1+((y(18)/cglu)^b))-yglu*y(16);
-% dy(17)= tglu*y(16)-dglu*y(17);
-% dy(18)= ktr2*y(17)*((GLUe-y(18))/(kmtr+GLUe+y(18)+(atr*GLUe*y(18))/kmtr))-((uglu*y(18)*y(17))/(kglu+y(18)))-dd*y(18);
+dy = zeros(23,1);
+dy(1) = b1*y(6)-d1*y(1);
+dy(2) = b2*y(7)-d1*y(2);
+dy(3) = b3*y(8)-d1*y(2)-k3*y(15)*y(3)+kn3*y(13);
+% the issue here is y19, is this y(19)?
+dy(4) = b4*y19-d1*y(4)-2*k4d*((y(4))^2)+2*kn4d*y(10);
+dy(5) = b80*y(9)-d1*y(5)-2*k80d*(y(5)^2)+2*kn80d*y(11)-k80*y(13)*y(5)+kn80*y(14);
+dy(6) = a1*y(19)*y23-y1*y(6)-((vsd*y(6)*y(17))/(ksd+y(6)));
+dy(7) = a2*y22-y2*y(7);
+dy(8) = a3*y19*y21-y3*y(8)-((vsd*y(8)*y(17))/(ksd+y(8)));
+dy(9) = a80*y21-y80*y(9);
+dy(10)= k4d*(y(4)^2)-kn4d*y(10)-kr*y(11)*y(10)+knr*y(12)-d1*y(10);
+dy(11)= k80d*(y(5)^2)-kn80d*y(11)-kr*y(11)*y(10)+knr*y(12)-d1*y(11);
+dy(12)= kr*dy(11)*dy(10)-knr*y(12)-d1*y(12);
+dy(13)= k3*y(3)*y(15)-kn3*y(13)-k80*y(5)*y(13)+kn80*y(14)-d1*y(13);
+dy(14)= k80*y(5)*y(13)-kn80*y(14)-d1*y(14);
+dy(15)= y19*y20-((kcat*y(1)*y(15))/(kmgk+y(15)))-k3*y(3)*y(15)+kn3*y(13)-d1*y(15);
+dy(16)= (aglu+eglu*((y(18)/cglu)^b))/(1+((y(18)/cglu)^b))-yglu*y(16);
+dy(17)= tglu*y(16)-dglu*y(17);
+dy(18)= ktr2*y(17)*((GLUe-y(18))/(kmtr+GLUe+y(18)+(atr*GLUe*y(18))/kmtr))-((uglu*y(18)*y(17))/(kglu+y(18)))-dd*y(18);
 %% FM 08/03/2016
 % The ones below are not state variables but you are treating them as such.
 % Let's discuss this tomorrow
