@@ -91,120 +91,133 @@ ksd = 30;
 N=1;
 x=1;
 a=1;
-
+h=1;
+i=0;
 y(10)=1;
 y(11)=1;
 %Term of the nominator
 for i= 0:N
-   if ((N-i) == 0)
-       y2n(a) = 0;
-       a = a+1;
-   else
-    for h=1:N-i
-        y2n(a)= (nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
-        a =a+1;
-    end
-   end 
+  
+     if (N==i)
+           y2n(a) = 0;
+           a =a+1;
+     else
+        for h=1:(N-i)
+
+             y2n(a)= (nchoosek(N-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
+             a =a+1;
+        end
+     end 
  y1n(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i);
  x=x+1;
 end
-yn= sum(y1n(1:2))*sum(y2n(1:2))
-clear x; clear h; clear a;
+yn= sum(y1n(1:2))*sum(y2n(1:2));
+clear x; clear h; clear a;clear i;
 
 %Term of the denominator
 x=1;
 a=1;
 
 for i= 0:N
-   
-    for h=0:N-i
+    
+    for h=0:(N-i)
         y2d(a)= (nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
         a =a+1;
     end
  y1d(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i);
  x=x+1;
 end 
-yd= sum(y1d(1:2))*sum(y2d(1:2))
+yd= sum(y1d(1:2))*sum(y2d(1:3));
 clear x; clear h; clear a;
 %Division
 y21= yn/yd;
 
 clear y2n;clear y1n;clear y2d; clear y1d;clear yd;clear yn;clear N;
 
-% %% ---- For N=2 -----
-% N=2;
-% x=1;
-% a=1;
-% h=1;
-% %Term of the nominator
-% for i= 0:N
-%    
-%     for a=h:N-i
-%         y2n(a)= (nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
-%         a =a+1;
-%     end
-%  y1n(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i);
-%  x=x+1;
-% end
-% yn= sum(y1n(1:3))*sum(y2n(1:3));
-% clear x; clear h; clear a;
-% %Term of the denominator
-% x=1;
-% a=1;
-% h=0;
-% for i= 0:N
-%    
-%     for a=h:N-i
-%         y2d(a)= (nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
-%         a =a+1;
-%     end
-%  y1d(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i);
-%  x=x+1;
-% end
-% yd= sum(y1d(1:3))*sum(y2d(1:3));
-% clear x; clear h; clear a;
-% %Division
-% y22= yn/yd;
-% 
-% clear y2n;clear y1n;clear y2d; clear y1d;clear yd;clear yn;clear N;
-% 
-% %% ---- for N=4 -----
-% 
-% N=4;
-% x=1;
-% a=1;
-% h=1;
-% %Term of the nominator
-% for i= 0:N
-%    
-%     for a=h:N-i
-%         y2n(a)= (nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
-%         a =a+1;
-%     end
-%  y1n(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i);
-%  x=x+1;
-% end
-% yn= sum(y1n(1:5))*sum(y2n(1:5));
-% clear x; clear h; clear a;
-% %Term of the denominator
-% x=1;
-% a=1;
-% h=0;
-% for i= 0:N
-%    
-%     for a=h:N-i
-%         y2d(a)= (nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
-%         a =a+1;
-%     end
-%  y1d(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i);
-%  x=x+1;
-% end
-% yd= sum(y1d(1:5))*sum(y2d(1:5));
-% clear x; clear h; clear a;
-% %Division
-% y23= yn/yd;
-% 
-% clear y2n;clear y1n;clear y2d; clear y1d;clear yd;clear yn;
+%% ---- For N=2 -----
+N=2;
+x=1;
+a=1;
+
+%Term of the nominator
+for i= 0:N
+    
+    if (N==i)
+           y2n(a) = 0;
+           a =a+1;
+    else
+       for h=1:(N-i)
+          y2n(a)= (nchoosek(N-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
+          a =a+1;
+       end
+    end
+ y1n(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i);
+ x=x+1;
+end
+yn= sum(y1n(1:3))*sum(y2n(1:3));
+clear x; clear h; clear a;
+%Term of the denominator
+x=1;
+a=1;
+h=0;
+for i= 0:N
+    
+   
+    for h=0:(N-i)
+        y2d(a)= (nchoosek(N-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
+        a =a+1;
+    end
+ y1d(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i);
+ x=x+1;
+end
+yd= sum(y1d(1:3))*sum(y2d(1:6));
+clear x; clear h; clear a;
+%Division
+y22= yn/yd;
+
+clear y2n;clear y1n;clear y2d; clear y1d;clear yd;clear yn;clear N;
+
+%% ---- for N=4 -----
+
+N=4;
+x=1;
+a=1;
+h=1;
+%Term of the nominator
+for i= 0:N
+   if (N==i)
+           y2n(a) = 0;
+           a =a+1;
+   else
+       for h=1:(N-i)
+           y2n(a)= (nchoosek(N-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
+           a =a+1;
+       end
+   end 
+ y1n(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i);
+ x=x+1;
+end
+yn= sum(y1n(1:5))*sum(y2n(1:5));
+clear x; clear h; clear a;
+%Term of the denominator
+x=1;
+a=1;
+h=0;
+for i= 0:N
+   
+    for h=0:(N-i)
+        y2d(a)= (nchoosek(N-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
+        a =a+1;
+    end
+ y1d(x)=(nchoosek(N,i)*(kq*kp*y(10)*y(11))^i);
+ x=x+1;
+end
+yd= sum(y1d(1:5))*sum(y2d(1:5));
+clear x; clear h; clear a;
+%Division
+y23= yn/yd;
+
+clear y2n;clear y1n;clear y2d; clear y1d;clear yd;clear yn;
 
 
 
