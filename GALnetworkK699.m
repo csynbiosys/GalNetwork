@@ -1,4 +1,4 @@
-
+% [T,Y]=ode45(@GALnetworkK699,[0 1000],ones(23,1))
 function dy = GALnetworkK699(t,y)
 t
 % values for galactose network module for the K699-strain
