@@ -1,6 +1,6 @@
 % [T,Y]=ode45(@GALnetworkK699,[0 1000],ones(23,1))
 function dy = GALnetworkK699(t,y)
-t
+% t
 % values for galactose network module for the K699-strain
 b1 = 9.92;
 b2 = 6.94;
@@ -62,6 +62,7 @@ ksd = 30;
 y19= (p^q)/((p^q)+(y(17)^q));
 y20= ktr*y(2)*((GALe-y(15))/(kmtr+GALe+y(15)+(atr*GALe*y(15)/kmtr)));
 
+% Expressing the sum series with a for loop
 %% ----- For N=1 -------
 N=1;
 x=1;
@@ -192,6 +193,8 @@ clear x; clear h; clear a;
 %Division
 y23= yn/yd;
 
+%%
+
 dy = zeros(23,1);
 
 dy(1) = b1*y(6)-d1*y(1);
@@ -221,7 +224,7 @@ dy(18)= ktr2*y(17)*((GLUe-y(18))/(kmtr+GLUe+y(18)+(atr*GLUe*y(18))/kmtr))-((uglu
 % y20= ktr*y(2)*((GALe-y(15))/(kmtr+GALe+y(15)+(atr*GALe*y(15)/kmtr)));
 % y21= (nchoosek(N,i)*(kq*kp*y(10)*y(11))^i)*(nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h)/(nchoosek(1,i)*(kq*kp*y(10)*y(11))^i)*(nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
 
-% Expressing the sum series with a for loop
+
 
 %% This clear is not needed (none of these variables is exported from this function.
 % clear y2n;clear y1n;clear y2d; clear y1d;clear yd;clear yn;
