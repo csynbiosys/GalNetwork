@@ -1,6 +1,6 @@
 % [T,Y]=ode45(@GALnetworkK699,[0 1000],ones(23,1))
 function dy = GALnetworkK699(t,y)
-% t
+t
 % values for galactose network module for the K699-strain
 b1 = 9.92;
 b2 = 6.94;
@@ -49,8 +49,8 @@ dd = 0.0033;
 cglu = 1.075*10^7;
 b = 1.8;
 ktr2 = 4350;
-kmtr = 6.022*10^8;
-atr = 1.0;
+kmtr2 = 6.022*10^8;
+atr2 = 1.0;
 uglu = 5350;
 kglu = 1.29*10^7;
 GLUe = 0;%2.957*10^8;
@@ -69,8 +69,8 @@ x=1;
 a=1;
 h=1;
 i=0;
-y(10)=1;
-y(11)=1;
+% y(10)=1;
+% y(11)=1;
 %Term of the nominator
 for i= 0:N
   
@@ -200,7 +200,6 @@ dy = zeros(23,1);
 dy(1) = b1*y(6)-d1*y(1);
 dy(2) = b2*y(7)-d1*y(2);
 dy(3) = b3*y(8)-d1*y(2)-k3*y(15)*y(3)+kn3*y(13);
-% the issue here is y19, is this y(19)?
 dy(4) = b4*y19-d1*y(4)-2*k4d*((y(4))^2)+2*kn4d*y(10);
 dy(5) = b80*y(9)-d1*y(5)-2*k80d*(y(5)^2)+2*kn80d*y(11)-k80*y(13)*y(5)+kn80*y(14);
 dy(6) = a1*y(19)*y23-y1*y(6)-((vsd*y(6)*y(17))/(ksd+y(6)));
@@ -215,7 +214,7 @@ dy(14)= k80*y(5)*y(13)-kn80*y(14)-d1*y(14);
 dy(15)= y19*y20-((kcat*y(1)*y(15))/(kmgk+y(15)))-k3*y(3)*y(15)+kn3*y(13)-d1*y(15);
 dy(16)= (aglu+eglu*((y(18)/cglu)^b))/(1+((y(18)/cglu)^b))-yglu*y(16);
 dy(17)= tglu*y(16)-dglu*y(17);
-dy(18)= ktr2*y(17)*((GLUe-y(18))/(kmtr+GLUe+y(18)+(atr*GLUe*y(18))/kmtr))-((uglu*y(18)*y(17))/(kglu+y(18)))-dd*y(18);
+dy(18)= ktr2*y(17)*((GLUe-y(18))/(kmtr2+GLUe+y(18)+(atr2*GLUe*y(18))/kmtr2))-((uglu*y(18)*y(17))/(kglu+y(18)))-dd*y(18);
 %% FM 08/03/2016
 % The ones below are not state variables but you are treating them as such.
 % Let's discuss this tomorrow
@@ -225,9 +224,6 @@ dy(18)= ktr2*y(17)*((GLUe-y(18))/(kmtr+GLUe+y(18)+(atr*GLUe*y(18))/kmtr))-((uglu
 % y21= (nchoosek(N,i)*(kq*kp*y(10)*y(11))^i)*(nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h)/(nchoosek(1,i)*(kq*kp*y(10)*y(11))^i)*(nchoosek(1-i,h)*(cp^(h+i-1))*(cq^(i-1))*(kp*y(10))^h);
 
 
-
-%% This clear is not needed (none of these variables is exported from this function.
-% clear y2n;clear y1n;clear y2d; clear y1d;clear yd;clear yn;
 
 
 
