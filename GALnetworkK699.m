@@ -49,8 +49,8 @@ dd = 0.0033;
 cglu = 1.075*10^7;
 b = 1.8;
 ktr2 = 4350;
-kmtr = 6.022*10^8;
-atr = 1.0;
+kmtr2 = 6.022*10^8;
+atr2 = 1.0;
 uglu = 5350;
 kglu = 1.29*10^7;
 GLUe = 0;%2.957*10^8;
@@ -212,7 +212,7 @@ dy(14)= k80*y(5)*y(13)-kn80*y(14)-d1*y(14);
 dy(15)= y19*y20-((kcat*y(1)*y(15))/(kmgk+y(15)))-k3*y(3)*y(15)+kn3*y(13)-d1*y(15);
 dy(16)= (aglu+eglu*((y(18)/cglu)^b))/(1+((y(18)/cglu)^b))-yglu*y(16);
 dy(17)= tglu*y(16)-dglu*y(17);
-dy(18)= ktr2*y(17)*((GLUe-y(18))/(kmtr+GLUe+y(18)+(atr*GLUe*y(18))/kmtr))-((uglu*y(18)*y(17))/(kglu+y(18)))-dd*y(18);
+dy(18)= ktr2*y(17)*((GLUe-y(18))/(kmtr2+GLUe+y(18)+(atr2*GLUe*y(18))/kmtr2))-((uglu*y(18)*y(17))/(kglu+y(18)))-dd*y(18);
 %% FM 08/03/2016
 % The ones below are not state variables but you are treating them as such.
 % Let's discuss this tomorrow
