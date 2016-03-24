@@ -1,4 +1,4 @@
-% [T,Y]=ode45(@GALnetworkK699,[0 1000],ones(23,1))
+% [t,y]=ode45(@GALnetworkK699,[0 1000],ones(23,1))
 function dy = GALnetworkK699(t,y)
 t
 % values for galactose network module for the K699-strain
@@ -35,7 +35,7 @@ kp = 0.091;
 kq = 0.0556;
 cp = 1;
 cq = 30;
-GALe = 2.366*10^8;
+GALe = 0;% 2.366*10^8;
 i=0;
 
 % values for glucose network module for the K699-strain
@@ -53,7 +53,7 @@ kmtr2 = 6.022*10^8;
 atr2 = 1.0;
 uglu = 5350;
 kglu = 1.29*10^7;
-GLUe = 0;%2.957*10^8;
+GLUe = 2.957*10^8;
 p = 1.29*10^7;
 q = 0.8;
 vsd = 9.30*10^(-6);
