@@ -1,5 +1,8 @@
+% Command to simulate 3000 minutes starting from non-induced initial
+% conditions
+%[t,y]=ode45(@montiGALmodel,[0 3000],[31.9700    0.0001    0.3630   34.1947]);plot(t,y)
 function dy = montiGALmodel(t,y)
- s=10E-3*(sign(t-1000)+1)/2;
+s=10E-3*(sign(t-1000)+1)/2;
 % s=0;
 % Parameters
 kf81=100;
