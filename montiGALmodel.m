@@ -1,6 +1,6 @@
 % [t,y]=ode45(@montiGALmodel,[0 3000],[31.9700    0.0001    0.3630   34.1947]);plot(t,y)
 function dy = montiGALmodel(t,y)
-s=10E-4*(sign(t-1000)+1)/2-10E-4*(sign(t-2000)+1)/2;
+s=10E-4*(sign(t-1000)+1)/2-10E-4*(sign(t-2500)+1)/2;
 % Parameters
 kf81=100;
 kr81=1500;

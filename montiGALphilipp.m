@@ -1,8 +1,8 @@
-function dy = montiGALmodel(t,y)
+function dy = montiGALphilipp(t,y)
 % [T,Y]=ode45(@montiGALmodel,[0 5000],ones(4,1))
 % This gal network model is from the paper "A modified galactose network
 % with implication for growth"
-t
+%t
 %Defining the model parameters
 kf81 = 100;
 kr81 = 1500;
@@ -32,7 +32,8 @@ yC84 = 0.004;
 e = 0.1;
 C = 22.1;
 KM = 0.086;
-s=10E-3*(sign(t-1000).*sign(2000-t)+1)/2; %Input step after 1000 for 1000 minutes 
+% s=10E-3*(sign(t-1000)-sign(2000-t)+1)/2; %Input step after 1000 for 1000 minutes 
+s=10E-4*(sign(t-1000)+1)/2-10E-4*(sign(t-2000)+1)/2;
 
 
 
